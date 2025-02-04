@@ -1,8 +1,9 @@
 
 async function getWeather(){
 
+    let city=document.getElementById('city').value;
     
-const response= await fetch("https://api.openweathermap.org/data/2.5/forecast?q=london&appid=6a86468ac81fa36a5565acaaa9f651b5")
+const response= await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=6a86468ac81fa36a5565acaaa9f651b5`)
 const data = await response.json()
 
 const {list}=data
