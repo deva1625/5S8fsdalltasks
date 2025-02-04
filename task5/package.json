@@ -1,0 +1,11 @@
+{
+  "name": "task5",
+  "version": "1.0.0",
+  "description": "node js initial lab",
+  "main": "demo5.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "deva",
+  "license": "ISC"
+}
