@@ -2,7 +2,7 @@ const express=require('express')
 
 
 const app=express()
-const users=require('./user.json')
+// const users=require('./user.json')
 
 app.get('/',(req,res)=>{
     res.send('Hello World')

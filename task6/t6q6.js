@@ -13,6 +13,8 @@ app.get('/',(req,res)=>{
 app.get('/users',(req,res)=>{
     res.json(users)
 })
+
+
 app.listen(2000,()=>{
     console.log("Server started in port 2000")
 })
