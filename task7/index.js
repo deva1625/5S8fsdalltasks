@@ -32,13 +32,13 @@ app.get('/users/:id',(req,res)=>{
     const user=users.find(user=>user.id===Number(req.params.id))
     if(!user){
         res.status(404).send("User not found")
-
+        
     }
     else{
-
-    res.send(user)
-    
-
+        
+        res.send(user)
+        
+        
     }
 })
 
@@ -46,59 +46,59 @@ app.get('/users/:id',(req,res)=>{
 
 //adding
 app.post('/users/adduser',(req,res)=>{
-            if(req.body){
-                users.push(req.body)
-
-
-                fs.writeFileSync('./users.json',JSON.stringify(users))
-            
-                res.status(200).send("Success")
-            }
-            else{
-                res.status(400).send("Invalid request")
-            }
-            
-
-
+    if(req.body){
+        users.push(req.body)
+        
+        
+        fs.writeFileSync('./users.json',JSON.stringify(users))
+        
+        res.status(200).send("Success")
+    }
+    else{
+        res.status(400).send("Invalid request")
+    }
+    
+    
+    
 })
 
 //update
 app.patch('/users/modify/:id',(req,res)=>{
-
-        const id=Number(req.params.id)
-        const user=users.find(user=>user.id===id)
-        if(!user){
-            res.status(404).send("User not found")
-        }
-        else{
-            user.name=req.body.name
-            res.status(200).send("User modified")
-
-            fs.writeFileSync('./users.json',JSON.stringify(users))
-
-            }
-            
+    
+    const id=Number(req.params.id)
+    const user=users.find(user=>user.id===id)
+    if(!user){
+        res.status(404).send("User not found")
+    }
+    else{
+        user.name=req.body.name
+        res.status(200).send("User modified")
+        
+        fs.writeFileSync('./users.json',JSON.stringify(users))
+        
+    }
+    
 })
 
 //delete
 app.delete('/users/delete/:id',(req,res)=>{
-
-//const user=users.find((user)=>user.id===Number(req.params.id))
-const id=Number(req.params.id)
-        const user=users.find(user=>user.id===id)
-
-if(user){
-    const index=users.indexOf(user)
-    users.splice(index,1)
-    res.status(200).send("User deleted")
-
+    
+    
+    const id=Number(req.params.id)
+    const user=users.find(user=>user.id===id)
+    
+    if(user){
+        const index=users.indexOf(user)
+        users.splice(index,1)
+        res.status(200).send("User deleted")
+        
         fs.writeFileSync('./users.json',JSON.stringify(users))
-}else{
-    res.status(404).send("User not found")
-}
-
-
-
+    }else{
+        res.status(404).send("User not found")
+    }
+    
+    
+    
 })
 
 app.listen(3000,()=>{
