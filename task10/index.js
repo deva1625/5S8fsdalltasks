@@ -21,6 +21,9 @@ app.post('/login', (req, res) => {
 });
 
 function verifyToken(req, res, next) {
+
+    
+
     const token = req.headers['authorization'];
     const barrer = token.split(' ')[1];
     req.token = barrer;
