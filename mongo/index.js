@@ -37,6 +37,27 @@ app.post("/api/users",async(req,res)=>{
     res.status(200).json(user)
 })
 
-app.get("/users",(req,res)=>{
+app.get("/users/:id",async(req,res)=>{
+
+    const id=req.params.id
+    const user=await userModel.findById(id)
     res.json(user)
+})
+
+
+
+
+app.put("/update/:id",async(req,res)=>{
+    
+    const id=req.params.id
+    const user=await userModel.findByIdAndUpdate(id,req.body)
+
+    res.json(user)
+})
+app.delete("/delete/:id",async(req,res)=>{
+    const id=req.params.id
+
+    const user=await userModel.findByIdAndDelete(id)
+
+        res.json(user)
 })
